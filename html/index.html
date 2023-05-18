@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;1,900&display=swap" rel="stylesheet">
+        <style>
+            body {
+                width: 50%;
+                height: 50%;
+                overflow: hidden;
+                color: rgb(255, 255, 255);
+            }
+            * { font-family: 'Montserrat', sans-serif; }
+
+            .hud-container {
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                flex-direction: row;
+                position: fixed;
+                bottom: 0%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            } 
+
+            .health-container {
+                background-color: rgba(255, 0, 0, 0.479);
+                text-align: end;
+                display: flex;
+                width: 50%;
+                height: 53px;
+                margin: 0.2vh;
+                padding: 0.1vh;
+                border-radius: 4px;
+                /* border: 1px solid rgb(255, 0, 0); */
+                clip-path: polygon(85% 0, 93% 50%, 100% 50%, 100% 100%, 92.5% 100%, 85% 60%, 0 60%, 0 0);
+            }
+            .armor-container{
+                background-color: rgba(0, 136, 255, 0.438);
+                text-align: end;
+                display: flex;
+                width: 50%;
+                height: 52px;
+                margin: 0.2vh;
+                padding: 0.1vh;
+                border-radius: 4px;
+                clip-path: polygon(7.5% 50%, 15% 0%, 100% 0%, 100% 60%, 15% 60%, 7.5% 100%, 0 100%, 0 50%);
+                /* border: 1px solid rgba(0,134,255,0.7); */
+            }
+
+            .health-container i{
+                margin:0.8vh 0.1vh 0 0.2vh;
+            }
+
+            .armor-container i {
+                position: absolute;
+                top: 2px;
+                right: 0.8vh;
+                margin:0.8vh 0.1vh 0 20.2vh;
+            }
+
+            .health-status,
+            .armor-status {
+                /*background-color: rgba(255, 0, 0, 0.8);*/
+                text-align: center;
+                display: flex;
+                width: 100%;
+                margin: 0.1vh;
+                padding-top: 0.1vh;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="hud-container">
+            <div class="health-container">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <div class="health-status"></div>
+            </div>
+            <div class="armor-container">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="armor-status"></div>
+                <div id="ArmorText"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.addEventListener("message", function (event) {
+
+            let data = event.data;
+            let health = $('.health-status');
+            let armor = $('.armor-status');
+
+            if (data.showHud == true) {
+                $('body').fadeIn(100);
+            } else {
+                $('body').fadeOut(100);
+            }
+
+            if (data.health > 25) {
+                health.css({
+                    'background': 'linear-gradient(90deg, rgb(255, 0, 0) ' + data.health + '%' + ' ,rgba(0, 0, 0, 0.5) 50%)'
+                });
+            } else if (data.health < 25) {
+                health.css({
+                    'background': 'linear-gradient(90deg, rgba(255,72,0,0.7) ' + data.health + '%' + ' ,rgba(0, 0, 0, 0.5) 50%)'
+                });
+            }
+
+            if (data.armor == 0) {
+                // armor.text('USE ARMOR BRO');
+                armor.css({
+                    'background': 'transparent'
+                });
+            } else if (data.armor > 25) {
+                armor.text('');
+                armor.css({
+                    'background': 'linear-gradient(90deg, rgba(0,134,255,0.7) ' + data.armor + '%' + ' ,rgba(0, 0, 0, 0.5) 50%)'
+                });
+            } else if (data.armor < 25) {
+                armor.text('');
+                armor.css({
+                    'background': 'linear-gradient(90deg, rgba(255,72,0,0.7) ' + data.armor + '%' + ' ,rgba(0, 0, 0, 0.5) 50%)'
+                });
+            }
+
+        });
+    </script>
+</html>
