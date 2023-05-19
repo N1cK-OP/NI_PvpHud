@@ -14,7 +14,7 @@ Free PVP Hud Script For Fivem
 
 - Step 2 - ensure it in your server.cfg by NI_PvpHud
  
-- Step 3 - restart your server
+- Step 3 - start your NI_PvpHud script
 
 ## ToDo
 
