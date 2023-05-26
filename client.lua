@@ -1,4 +1,4 @@
-Citizen.CreateThread(function()
+CreateThread(function()
     Wait(50)
     while true do
         Wait(100)
@@ -20,11 +20,11 @@ Citizen.CreateThread(function()
 end)
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
     Wait(50)
     while true do
-        miid(0.660, 1.435, 1.0,1.0,0.50, "~y~ID:~g~  ".. GetPlayerServerId(NetworkGetEntityOwner(GetPlayerPed(-1))) .. '', 255, 255, 255, 255)
-        Citizen.Wait(1)
+        miid(0.660, 1.435, 1.0,1.0,0.50, "~y~ID:~g~  ".. GetPlayerServerId(NetworkGetEntityOwner(PlayerPedId())) .. '', 255, 255, 255, 255)
+        Wait(100)
     end
 end)
 
