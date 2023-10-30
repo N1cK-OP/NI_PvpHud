@@ -1,6 +1,8 @@
 # NI_PvpHud
 Free PVP Hud Script For Fivem
 
+[![Version][version-shield]](version-url)
+
 ![image (1)](https://cdn.discordapp.com/attachments/900816868422594570/1108884905292734535/Screenshot_2023-05-19_035004.png)
 ![image (2)](https://cdn.discordapp.com/attachments/900816868422594570/1108884905825423390/Screenshot_2023-05-19_035033.png)
 ![image (3)](https://cdn.discordapp.com/attachments/900816868422594570/1108884906441969756/Screenshot_2023-05-19_035059.png)
